@@ -3,7 +3,8 @@
 enum class EWordStatus {
 	Valid,
 	AlreadyHad,
-	NotALetter
+	NotALetter,
+	InvalidLength
 };
 class HangMan {
 private:
@@ -12,7 +13,7 @@ private:
 	int HangManHangingStatus = 0;
 	std::string LettersHad[];
 public:
-	EWordStatus GetWordValidity();
+	EWordStatus GetWordValidity(std::string Letter);
 	int GetWordLength();
 	int GetTriesHad();
 	int GetHangManHangingStatus();

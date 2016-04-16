@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "HangMan.h"
 std::string Word = "HangMan";
 int main() {
 	std::cout << "Welcome to hangman!" << std::endl;
@@ -13,8 +14,24 @@ int main() {
 	while (true) {
 		std::cout << "Please type in a letter!" << std::endl;
 		std::getline(std::cin, Guess);
+		//Create A new HangMan class
+		HangMan HangManGame;
 
-		//Check guess validity (is it a single letter?
+		//Check guess validity (is it a single letter?)
+		if (HangManGame.GetWordValidity(Guess) != EWordStatus::Valid) {
+			//store it in a variable for ez access
+			EWordStatus WordStatus = HangManGame.GetWordValidity(Guess);
+			//Check through the errors w/ a swith loop
+			switch (WordStatus) {
+			case EWordStatus::NotALetter:
+				std::cout << "Your input was NOT an alphanumerical letter!";
+			case EWordStatus::InvalidLength:
+				std::cout << "Your input was too long! Please insert something that is 1 character long!";
+			case EWordStatus::AlreadyHad:
+				std::cout << "Sorry to disturb, but you seem to have already had this character, there is no point in repeating!";
+			}
+			//The word is not valid so checking for which error must occur, printing out the error to the user
+		}
 		//If the guess is valid
 			//Submit Guess for checking against the word
 		//If not
