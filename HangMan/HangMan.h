@@ -25,6 +25,8 @@ public:
 	std::string GetLettersHad();
 	GEuessCheckStatus SubmitGuess(std::string);
 	void Reset();
-
+	void SetUp();
+	std::string word{ "Hello" };
 	std::set<char> LetttersHad;
+	std::set<char> set;
 };

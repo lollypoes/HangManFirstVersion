@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "HangMan.h"
+#include <set>
 std::string Word = "HangMan";
 int main() {
 	std::cout << "Welcome to hangman!" << std::endl;
@@ -53,6 +54,10 @@ int main() {
 			//Congradulate the player and end round
 		//If no
 			//Do Nothing
-		
+		HangManGame.SetUp();
+		for (char letter : HangManGame.set)
+		{
+			std::cout << letter << ", ";
+		}
 	}
 }
