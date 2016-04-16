@@ -54,5 +54,14 @@ int main() {
 		//If no
 			//Do Nothing
 		
+
+		//print out the letters that have already been used!
+		std::cout << "Letters Used: " << std::endl;
+		for (int i = 26; i >= 0; i--) {
+			char Letter = HangManGame.Test[i];
+			if (HangManGame.LetterSeen[Letter]) {
+				std::cout << Letter << ", ";
+			}
+		}
 	}
 }

@@ -1,5 +1,4 @@
 #include "HangMan.h"
-
 EWordStatus HangMan::GetWordValidity(std::string Letter)
 {
 	if (Letter.length() != 1) {
@@ -16,6 +15,6 @@ EWordStatus HangMan::GetWordValidity(std::string Letter)
 
 GEuessCheckStatus HangMan::SubmitGuess(std::string Guess)
 {
-	LetttersHad.insert(Guess[0]).second;
+	LetterSeen[Guess[0]] = true;
 	return GEuessCheckStatus();
 }

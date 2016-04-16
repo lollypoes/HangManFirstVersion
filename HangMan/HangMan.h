@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include <set>
+#include <map>
 enum class EWordStatus {
 	Valid,
 	AlreadyHad,
@@ -25,6 +25,9 @@ public:
 	std::string GetLettersHad();
 	GEuessCheckStatus SubmitGuess(std::string);
 	void Reset();
-
-	std::set<char> LetttersHad;
+	void SetUp();
+	void SetUp2();
+	std::string word{ "Hello" };
+	std::map<char, bool> LetterSeen;
+	char Test[26]{ { 'A' },{ 'B' },{ 'C' },{ 'D' },{ 'E' },{ 'F' },{ 'G' },{ 'H' },{ 'I' },{ 'J' },{ 'K' },{ 'L' },{ 'M' },{ 'N' },{ 'O' },{ 'P' },{ 'Q' },{ 'R' },{ 'S' },{ 'T' },{ 'U' },{ 'V' },{ 'W' },{ 'X' },{ 'Y' },{ 'Z' }};
 };
