@@ -13,3 +13,9 @@ EWordStatus HangMan::GetWordValidity(std::string Letter)
 	}
 	return EWordStatus();
 }
+
+GEuessCheckStatus HangMan::SubmitGuess(std::string Guess)
+{
+	LetttersHad.insert(Guess[0]).second;
+	return GEuessCheckStatus();
+}

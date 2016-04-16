@@ -17,8 +17,10 @@ int main() {
 		//Create A new HangMan class
 		HangMan HangManGame;
 
-		//Check guess validity (is it a single letter?)
+		//Check if the input (Guess) is NOT a valid alphanumeric char, only 1 char long and has not been used before
 		if (HangManGame.GetWordValidity(Guess) != EWordStatus::Valid) {
+			//The word is not valid so checking for which error must occur, printing out the error to the user
+
 			//store it in a variable for ez access
 			EWordStatus WordStatus = HangManGame.GetWordValidity(Guess);
 			//Check through the errors w/ a swith loop
@@ -33,12 +35,12 @@ int main() {
 				std::cout << "Sorry to disturb, but you seem to have already had this character, there is no point in repeating!";
 				break;
 			}
-			//The word is not valid so checking for which error must occur, printing out the error to the user
+			
 		}
-		//If the guess is valid
+		else { //The input is valid
 			//Submit Guess for checking against the word
-		//If not
-			//Return appropreate error
+			HangManGame.SubmitGuess(Guess);
+		}
 
 		//Check if you are dead
 		//If you are dead
@@ -51,5 +53,6 @@ int main() {
 			//Congradulate the player and end round
 		//If no
 			//Do Nothing
+		
 	}
 }
