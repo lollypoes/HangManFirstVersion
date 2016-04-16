@@ -31,11 +31,9 @@ int main() {
 			case EWordStatus::InvalidLength:
 				std::cout << "Your input was too long! Please insert something that is 1 character long!";
 				break;
-			case EWordStatus::AlreadyUsed:
+			case EWordStatus::AlreadyHad:
 				std::cout << "Sorry to disturb, but you seem to have already had this character, there is no point in repeating!";
 				break;
-			default:
-				std::cout << "Guess Valid";
 			}
 			
 		}
