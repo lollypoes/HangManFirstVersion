@@ -39,7 +39,15 @@ int main() {
 		}
 		else { //The input is valid
 			//Submit Guess for checking against the word
-			HangManGame.SubmitGuess(Guess);
+			if (HangManGame.SubmitGuess(Guess[1])) {
+				std::cout << "Letters Used: " << std::endl;
+				for (auto Letter : HangManGame.LetterSeen) {
+					std::cout << Letter << ", ";
+				}
+			}
+			else {
+				std::cout << "You already used this letter!";
+			}
 		}
 
 		//Check if you are dead
@@ -56,12 +64,6 @@ int main() {
 		
 
 		//print out the letters that have already been used!
-		std::cout << "Letters Used: " << std::endl;
-		for (int i = 26; i >= 0; i--) {
-			char Letter = HangManGame.Test[i];
-			if (HangManGame.LetterSeen[Letter]) {
-				std::cout << Letter << ", ";
-			}
-		}
+		
 	}
 }

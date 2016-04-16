@@ -13,8 +13,14 @@ EWordStatus HangMan::GetWordValidity(std::string Letter)
 	return EWordStatus();
 }
 
-GEuessCheckStatus HangMan::SubmitGuess(std::string Guess)
-{
-	LetterSeen[Guess[0]] = true;
-	return GEuessCheckStatus();
+bool HangMan::SubmitGuess(char guess){
+		if (0 < LetterSeen.count(guess)) // already tried
+			return false;
+		else {
+			LetterSeen.insert(guess);
+			return true; //for testing return that it is valid
+		}
+	return false;
 }
+
+
