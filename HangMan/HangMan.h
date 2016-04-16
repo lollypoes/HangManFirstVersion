@@ -3,7 +3,7 @@
 #include <map>
 enum class EWordStatus {
 	Valid,
-	AlreadyHad,
+	AlreadyUsed,
 	NotALetter,
 	InvalidLength
 };
