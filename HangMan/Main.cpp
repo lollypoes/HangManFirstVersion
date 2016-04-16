@@ -25,10 +25,13 @@ int main() {
 			switch (WordStatus) {
 			case EWordStatus::NotALetter:
 				std::cout << "Your input was NOT an alphanumerical letter!";
+				break;
 			case EWordStatus::InvalidLength:
 				std::cout << "Your input was too long! Please insert something that is 1 character long!";
+				break;
 			case EWordStatus::AlreadyHad:
 				std::cout << "Sorry to disturb, but you seem to have already had this character, there is no point in repeating!";
+				break;
 			}
 			//The word is not valid so checking for which error must occur, printing out the error to the user
 		}
