@@ -48,7 +48,7 @@ int main() {
 				//Tell the user that the guess is incorrect
 			}
 			std::cout << "Letters Used: " << std::endl;
-			for (auto Letter : HangManGame.LetterSeen) {
+			for (auto Letter : HangManGame.GetLettersHad()) {
 				std::cout << Letter << ", ";
 			}
 		}

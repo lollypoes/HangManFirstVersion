@@ -1,4 +1,15 @@
 #include "HangMan.h"
+///Getters
+//Get the word length
+int HangMan::GetWordLength() { return Word.length(); }
+//Get the ammount of tries that the player has already had
+int HangMan::GetTriesHad() { return TriesHad; }
+//Get the status of how far dead the player is
+int HangMan::GetHangManHangingStatus() { return HangManHangingStatus; }
+//Get the letters that the player has already entered
+std::string HangMan::GetLettersHad() { return LetterSeen; }
+
+//Check the word's validity
 EWordStatus HangMan::GetWordValidity(std::string Letter)
 {
 	if (Letter.length() != 1) {
@@ -7,7 +18,7 @@ EWordStatus HangMan::GetWordValidity(std::string Letter)
 	else if (isalpha(Letter[0]) == false) {
 		return EWordStatus::NotALetter;
 	}
-	else if (std::string::npos != LetterSeen.find(toupper(Letter[0]))) { // already tried
+	else if (std::string::npos != LetterSeen.find(toupper(Letter[0]))) {
 		return EWordStatus::AlreadyHad;
 	}
 	else {
@@ -16,6 +27,7 @@ EWordStatus HangMan::GetWordValidity(std::string Letter)
 	return EWordStatus();
 }
 
+//Submit the word for the system to check
 GEuessSubmitStatus HangMan::SubmitGuess(std::string guess){
 		LetterSeen.append(guess);
 		for (auto Letter : Word) {
@@ -28,7 +40,6 @@ GEuessSubmitStatus HangMan::SubmitGuess(std::string guess){
 		HangManHangingStatus++;
 		//The user their guess was not in the word
 		return GEuessSubmitStatus::Incorrect;
-		
 }
 
 

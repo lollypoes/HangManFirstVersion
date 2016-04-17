@@ -16,6 +16,8 @@ private:
 	std::string Word = "HangMan";
 	int WordLength = 0;
 	int HangManHangingStatus = 0;
+	std::string LetterSeen;
+	int TriesHad;
 public:
 	EWordStatus GetWordValidity(std::string Letter);
 	int GetWordLength();
@@ -24,5 +26,4 @@ public:
 	std::string GetLettersHad();
 	GEuessSubmitStatus SubmitGuess(std::string);
 	void Reset();
-	std::string LetterSeen;
 };
