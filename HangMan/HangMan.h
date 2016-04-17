@@ -13,7 +13,7 @@ enum class GEuessSubmitStatus{
 };
 class HangMan {
 private:
-	std::string Word = "H";
+	std::string Word = "HangMan";
 	int WordLength = 0;
 	int HangManHangingStatus = 0;
 	std::string LetterSeen = "";
