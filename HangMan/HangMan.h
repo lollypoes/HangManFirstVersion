@@ -7,7 +7,7 @@ enum class EWordStatus {
 	NotALetter,
 	InvalidLength
 };
-enum class GEuessCheckStatus{
+enum class GEuessSubmitStatus{
 	Correct,
 	Incorrect
 };
@@ -16,14 +16,13 @@ private:
 	std::string Word = "HangMan";
 	int WordLength = 0;
 	int HangManHangingStatus = 0;
-	//std::string LettersHad[];
 public:
 	EWordStatus GetWordValidity(std::string Letter);
 	int GetWordLength();
 	int GetTriesHad();
 	int GetHangManHangingStatus();
 	std::string GetLettersHad();
-	bool SubmitGuess(std::string);
+	GEuessSubmitStatus SubmitGuess(std::string);
 	void Reset();
 	std::string LetterSeen;
 };

@@ -16,8 +16,6 @@ int main() {
 	while (true) {
 		std::cout << "Please type in a letter!" << std::endl;
 		std::getline(std::cin, Guess);
-
-
 		//Check if the input (Guess) is NOT a valid alphanumeric char, only 1 char long and has not been used before
 		if (HangManGame.GetWordValidity(Guess) != EWordStatus::Valid) {
 			//The word is not valid so checking for which error must occur, printing out the error to the user
@@ -39,15 +37,19 @@ int main() {
 			
 		}
 		else { //The input is valid
+			//Convert the guess to upper case
+			Guess = toupper(Guess[0]);
 			//Submit Guess for checking against the word
-			if (HangManGame.SubmitGuess(Guess)) {
-				std::cout << "Letters Used: " << std::endl;
-				for (auto Letter : HangManGame.LetterSeen) {
-					std::cout << Letter << ", ";
-				}
+			GEuessSubmitStatus GuessSubmitStatus = HangManGame.SubmitGuess(Guess);
+			if (GuessSubmitStatus == GEuessSubmitStatus::Correct) {
+				//congratulate the user on a correct guess!
 			}
 			else {
-				std::cout << "You already used this letter!";
+				//Tell the user that the guess is incorrect
+			}
+			std::cout << "Letters Used: " << std::endl;
+			for (auto Letter : HangManGame.LetterSeen) {
+				std::cout << Letter << ", ";
 			}
 		}
 
@@ -66,5 +68,7 @@ int main() {
 
 		//print out the letters that have already been used!
 		
+		
+
 	}
 }
