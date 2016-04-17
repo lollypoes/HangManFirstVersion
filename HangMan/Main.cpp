@@ -52,13 +52,36 @@ int main() {
 				std::cout << Letter << ", ";
 			}
 		}
-
 		//Check if you are dead
-		//If you are dead
-			//Tell the player they lost and this round
+		if (HangManGame.GetHangManHangingStatus() >= 10) {
+			//If you are dead
+			//Tell the player they lost
+			std::cout << "Nooooooooooooooooooooooooooooooooooo, You died :( Please try another time!" << std::endl;
+			std::cout << "The word was: " + HangManGame.GetWord();
+			
+		}
 		//If not
 			//Do Nothing
-		
+		for (auto Letter : HangManGame.GetWord()) {
+			//Loop through guesses already had
+			bool IsLetterInWord = false;
+			for (auto GuessLetter : HangManGame.GetLettersHad()) {
+				if (toupper(Letter) == GuessLetter) {
+					//Fine for this letter!
+					std::cout << GuessLetter;
+					std::cout << std::endl << "Letter Corerct!" << std::endl;
+					bool IsLetterInWord = true;
+				}
+			}
+			if (!(IsLetterInWord)) {
+				//Word incorrect
+				std::cout << std::endl << "Word Incorrect!" << std::endl;
+				break;
+			}
+			//if after 1 time through all letters had it is not equal to Letter
+				//Word is not yet guessed
+		}
+		std::cout << std::endl << "Word Correct!" << std::endl;
 		//Check if the word is guessed
 		//If yes
 			//Congradulate the player and end round

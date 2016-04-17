@@ -29,7 +29,10 @@ EWordStatus HangMan::GetWordValidity(std::string Letter)
 
 //Submit the word for the system to check
 GEuessSubmitStatus HangMan::SubmitGuess(std::string guess){
+		//Add guess to letters already had list
 		LetterSeen.append(guess);
+		//Add another try to the try counter
+		TriesHad++;
 		for (auto Letter : Word) {
 			if (Letter == guess[0]) {
 				//The user has their guess was in the word
@@ -40,6 +43,11 @@ GEuessSubmitStatus HangMan::SubmitGuess(std::string guess){
 		HangManHangingStatus++;
 		//The user their guess was not in the word
 		return GEuessSubmitStatus::Incorrect;
+}
+
+std::string HangMan::GetWord()
+{
+	return Word;
 }
 
 

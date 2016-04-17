@@ -13,11 +13,11 @@ enum class GEuessSubmitStatus{
 };
 class HangMan {
 private:
-	std::string Word = "HangMan";
+	std::string Word = "H";
 	int WordLength = 0;
 	int HangManHangingStatus = 0;
-	std::string LetterSeen;
-	int TriesHad;
+	std::string LetterSeen = "";
+	int TriesHad = 0;
 public:
 	EWordStatus GetWordValidity(std::string Letter);
 	int GetWordLength();
@@ -25,5 +25,6 @@ public:
 	int GetHangManHangingStatus();
 	std::string GetLettersHad();
 	GEuessSubmitStatus SubmitGuess(std::string);
+	std::string GetWord();
 	void Reset();
 };
