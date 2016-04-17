@@ -26,5 +26,4 @@ public:
 	std::string GetLettersHad();
 	GEuessSubmitStatus SubmitGuess(std::string);
 	std::string GetWord();
-	void Reset();
 };

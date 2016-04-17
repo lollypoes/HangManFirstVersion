@@ -2,9 +2,13 @@
 #include <string>
 #include "HangMan.h"
 void PlayGame();
+bool AskToPlayAgain();
 
 int main() {
-	PlayGame();
+	do {
+		PlayGame();
+	} while (AskToPlayAgain());
+	return 0;
 }
 
 	void PlayGame() {
@@ -16,7 +20,7 @@ int main() {
 
 		//While you are NOT dead or the word is NOT guessed
 		while (true) {
-			//!!!MUST BE OPTIMIZED!!! Display current word status
+			//Display current word status
 			{
 				int Count = 0;
 				for (auto Letter : HangManGame.GetWord()) {
@@ -92,7 +96,7 @@ int main() {
 				return;
 
 			}
-			//!!!MUST BE OPTIMIZED!!! Check if the word has been guessed
+			//Check if the word has been guessed
 			{
 				int Count = 0;
 				bool WordCorrect = true;
@@ -123,4 +127,11 @@ int main() {
 				}
 			}
 		}
+	}
+
+	bool AskToPlayAgain() {
+		std::string Response;
+		std::cout << "Do you want to play again? Y/N";
+		std::cin >> Response;
+		return (Response[0] == 'y' || Response[0] == 'Y');
 	}
