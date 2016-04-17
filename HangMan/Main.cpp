@@ -16,7 +16,7 @@ int main() {
 
 		//While you are NOT dead or the word is NOT guessed
 		while (true) {
-			//Display the word length and what has been guessed
+			//!!!MUST BE OPTIMIZED!!! Display current word status
 			{
 				int Count = 0;
 				for (auto Letter : HangManGame.GetWord()) {
@@ -45,21 +45,20 @@ int main() {
 
 				}
 			}
+			//Start of guess UI (display letters already used and ask for guess)
+			{
+				std::cout << std::endl << "Letters already used:     ";
+				for (auto Letter : HangManGame.GetLettersHad()) {
+					std::cout << Letter << ", ";
+				}
+				std::cout << std::endl;
 
-			std::cout << std::endl << "Letters already used:     ";
-			for (auto Letter : HangManGame.GetLettersHad()) {
-				std::cout << Letter << ", ";
+				std::cout << "Please type in a letter!" << std::endl;
+				std::getline(std::cin, Guess);
 			}
-			std::cout << std::endl;
 
-
-			std::cout << "Please type in a letter!" << std::endl;
-			std::getline(std::cin, Guess);
 			//Check if the input (Guess) is NOT a valid alphanumeric char, only 1 char long and has not been used before
 			if (HangManGame.GetWordValidity(Guess) != EWordStatus::Valid) {
-				//The word is not valid so checking for which error must occur, printing out the error to the user
-
-				//store it in a variable for ez access
 				EWordStatus WordStatus = HangManGame.GetWordValidity(Guess);
 				//Check through the errors w/ a swith loop
 				switch (WordStatus) {
@@ -73,10 +72,8 @@ int main() {
 					std::cout << "Sorry to disturb, but you seem to have already had this character, there is no point in repeating!";
 					break;
 				}
-
 			}
-			else { //The input is valid
-				   //Convert the guess to upper case
+			else {
 				Guess = toupper(Guess[0]);
 				//Submit Guess for checking against the word
 				GEuessSubmitStatus GuessSubmitStatus = HangManGame.SubmitGuess(Guess);
@@ -88,42 +85,42 @@ int main() {
 				}
 
 			}
-			//Check if you are dead
+			//Check if have already been hung and inform the user if yes
 			if (HangManGame.GetHangManHangingStatus() >= 10) {
-				//If you are dead
-				//Tell the player they lost
 				std::cout << "Nooooooooooooooooooooooooooooooooooo, You died :( Please try another time!" << std::endl;
 				std::cout << "The word was: " + HangManGame.GetWord();
 				return;
 
 			}
-
-			int Count = 0;
-			bool WordCorrect = true;
-			for (auto Letter : HangManGame.GetWord()) {
-				Count++;
-				//Loop through guesses already had
-				bool IsLetterInWord = false;
-				for (auto GuessLetter : HangManGame.GetLettersHad()) {
-					if (toupper(Letter) == GuessLetter) {
-						//Fine for this letter!
-						IsLetterInWord = true;
-						break;
+			//!!!MUST BE OPTIMIZED!!! Check if the word has been guessed
+			{
+				int Count = 0;
+				bool WordCorrect = true;
+				for (auto Letter : HangManGame.GetWord()) {
+					Count++;
+					//Loop through guesses already had
+					bool IsLetterInWord = false;
+					for (auto GuessLetter : HangManGame.GetLettersHad()) {
+						if (toupper(Letter) == GuessLetter) {
+							//Fine for this letter!
+							IsLetterInWord = true;
+							break;
+						}
+					}
+					if (IsLetterInWord == false) {
+						//Word incorrect
+						if (Count < 8) {
+							WordCorrect = false;
+						}
+						else {
+							Count = 0;
+						}
 					}
 				}
-				if (IsLetterInWord == false) {
-					//Word incorrect
-					if (Count < 8) {
-						WordCorrect = false;
-					}
-					else {
-						Count = 0;
-					}
+				if (WordCorrect) {
+					std::cout << "The word " << HangManGame.GetWord() << " was correct!";
+					return;
 				}
-			}
-			if (WordCorrect) {
-				std::cout << "The word " << HangManGame.GetWord() << " was correct!";
-				return;
 			}
 		}
 	}
