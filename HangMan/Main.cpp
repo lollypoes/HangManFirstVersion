@@ -7,7 +7,7 @@ int main() {
 	HangMan HangManGame;
 	std::cout << "Welcome to hangman!" << std::endl;
 	for (int Letter = Word.length(); Letter > 0; Letter--) {
-		std::cout << "__ ";
+		std::cout << " _ ";
 	}
 	std::cout << std::endl;
 	std::string Guess;
@@ -17,7 +17,7 @@ int main() {
 		//Display the word length and what has been guessed
 		{
 			int Count = 0;
-			for (auto Letter : "HangMan") {
+			for (auto Letter : HangManGame.GetWord()) {
 				Count++;
 				//Loop through guesses already had
 				bool IsLetterInWord = false;
@@ -92,6 +92,7 @@ int main() {
 			//Tell the player they lost
 			std::cout << "Nooooooooooooooooooooooooooooooooooo, You died :( Please try another time!" << std::endl;
 			std::cout << "The word was: " + HangManGame.GetWord();
+			return 0;
 
 		}
 		//If not
@@ -107,7 +108,7 @@ int main() {
 
 		int Count = 0;
 		bool WordCorrect = true;
-		for (auto Letter : "HangMan") {
+		for (auto Letter : HangManGame.GetWord()) {
 			Count++;
 			//Loop through guesses already had
 			bool IsLetterInWord = false;
