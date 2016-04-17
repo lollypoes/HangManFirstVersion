@@ -3,6 +3,8 @@
 #include "HangMan.h"
 std::string Word = "HangMan";
 int main() {
+	//Create A new HangMan class
+	HangMan HangManGame;
 	std::cout << "Welcome to hangman!" << std::endl;
 	for (int Letter = Word.length(); Letter > 0; Letter--) {
 		std::cout << "__ ";
@@ -14,8 +16,7 @@ int main() {
 	while (true) {
 		std::cout << "Please type in a letter!" << std::endl;
 		std::getline(std::cin, Guess);
-		//Create A new HangMan class
-		HangMan HangManGame;
+
 
 		//Check if the input (Guess) is NOT a valid alphanumeric char, only 1 char long and has not been used before
 		if (HangManGame.GetWordValidity(Guess) != EWordStatus::Valid) {
@@ -29,7 +30,7 @@ int main() {
 				std::cout << "Your input was NOT an alphanumerical letter!";
 				break;
 			case EWordStatus::InvalidLength:
-				std::cout << "Your input was too long! Please insert something that is 1 character long!";
+				std::cout << "Your input was the wrong length! Please insert something that is 1 character long!";
 				break;
 			case EWordStatus::AlreadyHad:
 				std::cout << "Sorry to disturb, but you seem to have already had this character, there is no point in repeating!";
@@ -39,7 +40,7 @@ int main() {
 		}
 		else { //The input is valid
 			//Submit Guess for checking against the word
-			if (HangManGame.SubmitGuess(Guess[1])) {
+			if (HangManGame.SubmitGuess(Guess)) {
 				std::cout << "Letters Used: " << std::endl;
 				for (auto Letter : HangManGame.LetterSeen) {
 					std::cout << Letter << ", ";

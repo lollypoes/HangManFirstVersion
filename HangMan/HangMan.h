@@ -23,7 +23,7 @@ public:
 	int GetTriesHad();
 	int GetHangManHangingStatus();
 	std::string GetLettersHad();
-	bool SubmitGuess(char);
+	bool SubmitGuess(std::string);
 	void Reset();
-	std::set<char> LetterSeen;
+	std::string LetterSeen;
 };
